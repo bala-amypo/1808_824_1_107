@@ -1,5 +1,5 @@
-import.jakarta.persistence.id;
-import.jakarta.persstence.Entity;
+import jakarta.persistence.id;
+import jakarta.persstence.Entity;
 
 @Entity
 public class ClaimRule

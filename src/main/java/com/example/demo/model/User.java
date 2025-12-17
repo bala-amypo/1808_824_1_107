@@ -1,6 +1,6 @@
-import.jakarta.persistence.Entity;
-import.jakarta.persistence.Id;
-import.jakarta.persistence.columnn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.columnn;
 
 @Entity
 public class User

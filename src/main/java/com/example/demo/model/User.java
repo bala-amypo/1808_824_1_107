@@ -1,6 +1,6 @@
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.columnn;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -11,7 +11,7 @@ public class User
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
   private String name;
-  @columnn(unique=true)
+  @Column(unique=true)
   private String email;
   private String password;
   private Role role=Role.STAFF;
@@ -59,9 +59,8 @@ public class User
   {
     this.role=role;
   }
-  User()
-  {}
-  User(Long id,String name,String email,String password,Role role)
+  
+  public User(Long id,String name,String email,String password,Role role)
   {
     this.id=id;
     this.name=name;

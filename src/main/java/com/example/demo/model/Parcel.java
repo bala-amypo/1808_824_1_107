@@ -63,8 +63,14 @@ public void setDate(LocalDateTime deliveredAt)
 }
 Parcel()
 {}
-Parcel()
+Parcel(Long id,String trackingNumber,String senderName,String receiverName,Double weightKg,LocalDateTime deliveredAt)
 {
-    
+  this.id=id;
+  this.trackingNumber=trackingNumber;
+  this.senderName=senderName;
+  this.receiverName=receiverName;
+  this.weightKg=weightKg;
+  this.deliveredAt=deliveredAt;
+
 }
 }

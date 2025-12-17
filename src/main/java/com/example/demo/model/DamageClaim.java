@@ -1,4 +1,4 @@
-class DamageClaim
+public class DamageClaim
 {
 
 }

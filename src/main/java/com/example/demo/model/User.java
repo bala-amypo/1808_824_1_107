@@ -8,6 +8,9 @@ public class User
   @Id
   private Long id;
   private String name;
-  @Email
-  @co
+  @columnn(unique=true)
+  private String email;
+  private String password;
+  
+
 }

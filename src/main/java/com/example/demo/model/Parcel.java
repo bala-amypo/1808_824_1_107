@@ -61,5 +61,10 @@ public void setDate(LocalDateTime deliveredAt)
 {
     this.deliveredAt=deliveredAt;
 }
-
+Parcel()
+{}
+Parcel()
+{
+    
+}
 }

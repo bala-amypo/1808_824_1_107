@@ -42,4 +42,13 @@ public void setweight(Double weight)
     this.weight=weight;
 }
 ClaimRule()
+{}
+
+ClaimRule(Long id,String ruleName,String conditionExpression,Double weight)
+{
+   this.id=id;
+   this.ruleName=ruleName;
+   this.conditionExpression=conditionExpression;
+   this.weight=weight;
+}
 }

@@ -1,9 +1,13 @@
+package com.example.
+
 import jakarta.persistence.id;
-import jakarta.persstence.Entity;
+import jakarta.persistence.Entity;
+import jakarta
 
 @Entity
 public class ClaimRule
 {   @Id
+    @
     private Long id;
     private String ruleName;
     private String conditionExpression;

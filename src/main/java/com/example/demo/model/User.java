@@ -1,16 +1,16 @@
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.columnn;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.columnn;
 
-@Entity
+// @Entity
 public class User
-{
-  @Id
-  private Long id;
-  private String name;
-  @columnn(unique=true)
-  private String email;
-  private String password;
+ {
+//   @Id
+//   private Long id;
+//   private String name;
+//   @columnn(unique=true)
+//   private String email;
+//   private String password;
   
 
 }

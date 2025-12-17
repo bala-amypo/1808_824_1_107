@@ -1,17 +1,20 @@
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.columnn;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class User
  {
   @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
   private String name;
   @columnn(unique=true)
   private String email;
   private String password;
-  private Role.role=Role.STAFF;
+  private Role role=Role.STAFF;
   public enum Role{
     ADMIN,
     AGENT
@@ -56,7 +59,16 @@ public class User
   {
     this.role=role;
   }
-
+  User()
+  {}
+  User(Long id,String name,String email,String password,Role role)
+  {
+    this.id=id;
+    this.name=name;
+    this.email=email;
+    this.password=password;
+    this.role=role;
+  }
   
 
 }

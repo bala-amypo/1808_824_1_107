@@ -1,4 +1,6 @@
+
+@Entity
 public class Parcel
 {
-    
+
 }

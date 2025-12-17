@@ -1,4 +1,6 @@
 import.jakarta.persistence.Entity;
+import.jakarta.persistence.id;
+import.jakarta.persistence.columnn;
 @Entity
 public class Parcel
 {
@@ -9,6 +11,14 @@ public class Parcel
   private String senderName;
   private String receiverName;
   private Double weightKg;
-  
+  private LocalDateTime deliveredAt;
 
+}
+public Long getid()
+{
+    return id;
+}
+public Long setid(Long)
+{
+    this.
 }

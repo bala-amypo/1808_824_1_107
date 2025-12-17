@@ -65,9 +65,9 @@ public void setDate(LocalDateTime deliveredAt)
 {
     this.deliveredAt=deliveredAt;
 }
-Parcel()
+ public Parcel()
 {}
-Parcel(Long id,String trackingNumber,String senderName,String receiverName,Double weightKg,LocalDateTime deliveredAt)
+ public Parcel(Long id,String trackingNumber,String senderName,String receiverName,Double weightKg,LocalDateTime deliveredAt)
 {
   this.id=id;
   this.trackingNumber=trackingNumber;

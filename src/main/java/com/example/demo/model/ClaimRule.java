@@ -14,11 +14,11 @@ public class ClaimRule
     private String conditionExpression;
     private Double weight;
 
-public Long getid()
+public Long getId()
 {
     return id;
 }
-public void setid(Long id)
+public void setId(Long id)
 {
     this.id=id;
 }
@@ -46,10 +46,10 @@ public void setweight(Double weight)
 {
     this.weight=weight;
 }
-ClaimRule()
+ public ClaimRule()
 {}
 
-ClaimRule(Long id,String ruleName,String conditionExpression,Double weight)
+ public ClaimRule(Long id,String ruleName,String conditionExpression,Double weight)
 {
    this.id=id;
    this.ruleName=ruleName;

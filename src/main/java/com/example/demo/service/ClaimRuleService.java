@@ -9,6 +9,7 @@ public class ClaimRuleService
   Map<Float,ClaimRule>rules=new Hashmap<>();
   public ClaimRule ruledetail(ClaimRule detail)
   {
-    rules.put()
+    rules.put(detail.getid(),detail);
+    return detail;
   }
 }

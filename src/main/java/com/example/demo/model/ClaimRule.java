@@ -1,5 +1,7 @@
 import.jakarta.persistence.id;
-import.jakarta.persistence.Entity;
+import.jakarta.persstence.Entity;
+
+@Entity
 public class ClaimRule
 {   @Id
     private Long id;
@@ -7,3 +9,8 @@ public class ClaimRule
     private String conditionExpression;
     private Double weight;
 }
+public getid()
+{
+    return id;
+}
+p

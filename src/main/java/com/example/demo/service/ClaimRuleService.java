@@ -7,7 +7,7 @@ import.com.example.demo.model.ClaimRule;
 public class ClaimRuleService
 {
   Map<Float,ClaimRule>rules=new Hashmap<>();
-  public ClaimRule ruledetail(ClaimRule detail)
+  public ClaimRule addRule(ClaimRule rule)
   {
     rules.put(detail.getid(),detail);
     return detail;

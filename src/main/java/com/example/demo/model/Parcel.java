@@ -28,5 +28,22 @@ public String getTrackNo()
 }
 public void setTrackNo(String trackingNumber)
 {
-    this.
+    this.trackingNumber=trackingNumber;
 }
+public String getSenName()
+{
+    return senderName;
+}
+public void setSenName(String senderName)
+{
+    this.senderName=senderName;
+}
+public String getRecName()
+{
+    return receiverName;
+}
+public void setRecName(String receiverName)
+{
+    this.receiverName=receiverName;
+}
+public Double 

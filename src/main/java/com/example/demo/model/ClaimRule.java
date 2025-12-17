@@ -1,1 +1,4 @@
-public class Clai
+public class ClaimRule
+{
+    
+}

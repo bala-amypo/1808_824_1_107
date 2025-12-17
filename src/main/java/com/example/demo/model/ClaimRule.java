@@ -9,35 +9,35 @@ public class ClaimRule
     private String conditionExpression;
     private Double weight;
 }
-public getid()
+public  Float getid()
 {
     return id;
 }
-public setid(long id)
+public void setid(long id)
 {
     this.id=id;
 }
-public getRname()
+public String getRname()
 {
     return ruleName;
 }
-public setRname(String ruleName)
+public  void setRname(String ruleName)
 {
     this.ruleName=ruleName;
 }
-public getCondEx()
+public  String getCondEx()
 {
     return conditionExpression;
 }
-public setCondEx(String conditionExpression)
+public void  setCondEx(String conditionExpression)
 {
     this.conditionExpression=conditionExpression;
 }
-public getweight()
+public Double getweight()
 {
     return weight;
 }
-public setweight(Double weight)
+public void setweight(Double weight)
 {
     this.weight=weight;
 }

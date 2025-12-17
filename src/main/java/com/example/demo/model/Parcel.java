@@ -18,7 +18,15 @@ public Long getid()
 {
     return id;
 }
-public Long setid(Long)
+public void setid(Long id)
+{
+    this.id=id;
+}
+public String getTrackNo()
+{
+  return trackingNumber;
+}
+public void setTrackNo(String trackingNumber)
 {
     this.
 }

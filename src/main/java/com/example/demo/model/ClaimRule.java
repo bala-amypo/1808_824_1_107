@@ -1,13 +1,14 @@
-package com.example.
+package com.example.demo.model;
 
-import jakarta.persistence.id;
+import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
-import jakarta
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class ClaimRule
 {   @Id
-    @
+    @GeneratedValue(strategy=GenerationType.IDENTITY )
     private Long id;
     private String ruleName;
     private String conditionExpression;

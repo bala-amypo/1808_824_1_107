@@ -9,11 +9,11 @@ public class ClaimRule
     private String conditionExpression;
     private Double weight;
 }
-public  Float getid()
+public Long getid()
 {
     return id;
 }
-public void setid(long id)
+public void setid(Long id)
 {
     this.id=id;
 }

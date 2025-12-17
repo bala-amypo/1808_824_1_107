@@ -46,4 +46,11 @@ public void setRecName(String receiverName)
 {
     this.receiverName=receiverName;
 }
-public Double 
+public Double getweightKg()
+{
+    return weightKg;
+}
+public void setweightKg(Double weightKg)
+{
+    this.weightKg=weightKg;
+}

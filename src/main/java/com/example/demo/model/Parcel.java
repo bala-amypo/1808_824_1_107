@@ -1,14 +1,16 @@
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Columnn;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import java.time.LocalDateTime;
 @Entity
 public class Parcel
 {
   @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
-  @Columnn(unique=true)
+  @Column(unique=true)
   private String trackingNumber;
   private String senderName;
   private String receiverName;
@@ -73,6 +75,5 @@ Parcel(Long id,String trackingNumber,String senderName,String receiverName,Doubl
   this.receiverName=receiverName;
   this.weightKg=weightKg;
   this.deliveredAt=deliveredAt;
-
 }
 }

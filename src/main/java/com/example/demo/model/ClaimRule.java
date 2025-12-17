@@ -25,7 +25,19 @@ public setRname(String ruleName)
 {
     this.ruleName=ruleName;
 }
-public getCondE()
+public getCondEx()
 {
     return conditionExpression;
+}
+public setCondEx(String conditionExpression)
+{
+    this.conditionExpression=conditionExpression;
+}
+public getweight()
+{
+    return weight;
+}
+public setweight(Double weight)
+{
+    this.weight=weight;
 }

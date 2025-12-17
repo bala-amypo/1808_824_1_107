@@ -1,4 +1,4 @@
-public class ClaimRuleService()
+public class ClaimRuleService
 {
-  
+
 }

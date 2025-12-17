@@ -11,7 +11,16 @@ public class User
   @columnn(unique=true)
   private String email;
   private String password;
-  private Role.role
+  private Role.role=Role.STAFF;
+  public enum Role{
+    ADMIN,
+    AGENT
+  }
+  public Long getid()
+  {
+    return id;
+  }
+  public void 
   
 
 }

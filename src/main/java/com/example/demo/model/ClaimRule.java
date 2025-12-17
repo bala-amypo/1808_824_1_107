@@ -1,5 +1,7 @@
 public class ClaimRule
 {
     private Long id;
-    private S
+    private String ruleName;
+    private String conditionExpression;
+    private Double weight;
 }

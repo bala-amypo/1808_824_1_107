@@ -1,12 +1,14 @@
 import jakarta.persistence.Entity;
-import jakarta.persistence.id;
-import jakarta.persistence.columnn;
+import jakarta.persistence.Id;
+import jakarta.persistence.Columnn;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 @Entity
 public class Parcel
 {
-  @id
+  @Id
   private Long id;
-  @columnn(unique=true)
+  @Columnn(unique=true)
   private String trackingNumber;
   private String senderName;
   private String receiverName;

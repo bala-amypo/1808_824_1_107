@@ -1,4 +1,5 @@
+@Entity
 public class Evidence
 {
-
+  
 }

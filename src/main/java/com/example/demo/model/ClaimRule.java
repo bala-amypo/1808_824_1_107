@@ -8,7 +8,7 @@ public class ClaimRule
     private String ruleName;
     private String conditionExpression;
     private Double weight;
-}
+
 public Long getid()
 {
     return id;
@@ -40,4 +40,5 @@ public Double getweight()
 public void setweight(Double weight)
 {
     this.weight=weight;
+}
 }

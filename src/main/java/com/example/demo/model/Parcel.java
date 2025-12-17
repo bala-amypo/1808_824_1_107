@@ -13,7 +13,6 @@ public class Parcel
   private Double weightKg;
   private LocalDateTime deliveredAt;
 
-}
 public Long getid()
 {
     return id;
@@ -53,4 +52,14 @@ public Double getweightKg()
 public void setweightKg(Double weightKg)
 {
     this.weightKg=weightKg;
+}
+public LocalDateTime getDate()
+{
+    return deliveredAt;
+}
+public void setDate(LocalDateTime deliveredAt)
+{
+    this.deliveredAt=deliveredAt;
+}
+
 }

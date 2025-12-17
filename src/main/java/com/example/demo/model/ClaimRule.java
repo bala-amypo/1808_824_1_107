@@ -13,4 +13,19 @@ public getid()
 {
     return id;
 }
-p
+public setid(long id)
+{
+    this.id=id;
+}
+public getRname()
+{
+    return ruleName;
+}
+public setRname(String ruleName)
+{
+    this.ruleName=ruleName;
+}
+public getCondE()
+{
+    return conditionExpression;
+}

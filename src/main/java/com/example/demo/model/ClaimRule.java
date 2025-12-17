@@ -38,11 +38,11 @@ public void  setCondEx(String conditionExpression)
 {
     this.conditionExpression=conditionExpression;
 }
-public Double getweight()
+public Double getWeight()
 {
     return weight;
 }
-public void setweight(Double weight)
+public void setWeight(Double weight)
 {
     this.weight=weight;
 }

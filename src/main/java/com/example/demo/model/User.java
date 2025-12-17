@@ -14,7 +14,7 @@ public class User
   @Column(unique=true)
   private String email;
   private String password;
-  private Role role=Role.STAFF;
+  private Role role=Role.AGENT;
   public enum Role{
     ADMIN,
     AGENT

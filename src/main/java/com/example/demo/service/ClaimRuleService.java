@@ -6,5 +6,9 @@ import.com.example.demo.model.ClaimRule;
 @service
 public class ClaimRuleService
 {
-  Map<Float,ClaimRule>
+  Map<Float,ClaimRule>rules=new Hashmap<>();
+  public ClaimRule ruledetail(ClaimRule detail)
+  {
+    rules.put()
+  }
 }

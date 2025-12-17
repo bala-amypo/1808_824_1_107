@@ -41,4 +41,5 @@ public void setweight(Double weight)
 {
     this.weight=weight;
 }
+ClaimRule()
 }

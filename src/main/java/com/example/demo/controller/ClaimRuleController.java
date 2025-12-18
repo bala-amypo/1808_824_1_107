@@ -12,9 +12,14 @@ public class ClaimRuleController{
     @Autowired
     ClaimRuleService crs;
     @PostMapping("/rules")
-    public ClaimRule addRule(@RequestBody ClaimRule rule)
+    public ClaimRule rules(@RequestBody ClaimRule rule)
     {
-        return 
+        return crs.addrule(rule);
+    }
+    @GetMapping
+    public List<ClaimRule> getrules()
+    {
+        return crs.getAllrules()
     }
 
 }

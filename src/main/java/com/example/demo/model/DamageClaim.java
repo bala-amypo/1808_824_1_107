@@ -12,5 +12,16 @@ public class DamageClaim
     private String status;
     private Double score;
 
-
+public Long getId()
+{
+    return id;
+}
+public void setid(Long id)
+{
+    this.id=id;
+}
+public String getClaimDes()
+{
+    return claimDes
+}
 }

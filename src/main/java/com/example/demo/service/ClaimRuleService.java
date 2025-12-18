@@ -1,4 +1,7 @@
+
+
 public interface ClaimRuleService
 {
-    
+    ClaimRule addRule(ClaimRule rule);
+    List<ClaimRule> getAllRules();
 }

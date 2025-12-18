@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 public class Evidence
 {
   @Id
-  @GeneratedValue(strategy=GenerationType=IDENTITY)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
   
 }

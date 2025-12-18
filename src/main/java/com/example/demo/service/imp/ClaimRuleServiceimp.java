@@ -1,10 +1,9 @@
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.example.demo.repository.ClaimRuleReposi
+import org.springframework.beans
 @Service
-public class ClaimRuleServiceimp implements ClaimRuleService
-{
+public class ClaimRuleServiceimp implements ClaimRuleService{
     @Autowired
-    Locat
+    ClaimRuleRepository crr;
 
+    
 }

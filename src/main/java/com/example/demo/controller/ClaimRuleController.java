@@ -5,11 +5,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.ClaimRule;
-import com.example.demo.
+import com.example.demo.service.ClaimRuleService;
+
 @RestController
 public class ClaimRuleController{
     @Autowired
     ClaimRuleService crs;
     @PostMapping("/rules")
+    public ClaimRule addRule(@RequestBody ClaimRule rule)
+    {
+        return 
+    }
 
 }

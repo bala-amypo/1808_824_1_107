@@ -106,4 +106,9 @@ public class DamageClaim {
     public void setAppliedRules(Set<ClaimRule> appliedRules) {
         this.appliedRules = appliedRules;
     }
+    public enum ClaimStatus {
+    PENDING,
+    APPROVED,
+    REJECTED
+}
 }

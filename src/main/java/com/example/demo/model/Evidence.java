@@ -72,7 +72,9 @@ public class Evidence
     {
       this.id=id;
       this.claim=claim;
-      this.
+      this.evidenceType=evidenceType;
+      this.fileUrl=fileUrl;
+      this.uploadedAt=uploadedAt;
     }
 
   

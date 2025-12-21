@@ -5,6 +5,7 @@ import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
+@Table
 public class Evidence
 {
   @Id
@@ -48,8 +49,21 @@ public class Evidence
     }
     public String getfile()
     {
-      return file
+      return fileUrl;
     }
+    public void setfile()
+    {
+      this.fileUrl=fileUrl;
+    }
+    public LocalDateTime gettime()
+    {
+      return uploadedAt;
+    }
+    public void settime(LocalDateTime uploadedAt)
+    {
+      this.uploadedAt=uploadedAt;
+    }
+
 
   
 }

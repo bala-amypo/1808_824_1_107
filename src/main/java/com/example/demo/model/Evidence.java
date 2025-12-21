@@ -38,7 +38,18 @@ public class Evidence
     {
       this.claim=claim;
     }
-    
+    public String getevidence()
+    {
+      return evidenceType;
+    }
+    public void setevidence(String evidenceType)
+    {
+      this.evidenceType=evidenceType;
+    }
+    public String getfile()
+    {
+      return file
+    }
 
   
 }

@@ -17,6 +17,15 @@ public class Evidence
   private String fileUrl;
   private LocatDateTime uploadedAt;
   @PrePersist
-  
+  public void onUpdate()
+   {
+    this.uploadedAt = LocalDateTime.now();
+    }
+
+    String getid()
+    {
+      return id;
+    }
+
   
 }

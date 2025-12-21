@@ -3,6 +3,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
+import jakarta.persistence.Table;
 
 @Entity
 @Table
@@ -63,7 +64,16 @@ public class Evidence
     {
       this.uploadedAt=uploadedAt;
     }
+    public Evidence()
+    {
 
+    }
+    public Evidence(Long id,DamageClaim claim,String evidenceType,String fileUrl,LocalDateTime uploadedAt)
+    {
+      this.id=id;
+      this.claim=claim;
+      this.
+    }
 
   
 }

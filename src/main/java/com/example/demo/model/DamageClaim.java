@@ -9,7 +9,8 @@ public class DamageClaim
     @GenerateValue(strategy=GeneratedType.Identity)
     private Long id;
     @ManyToOne
-    
+    @joinColumn(name="parcel_id")
+    private
     private String claimDescription;
     private String status;
     private Double score;

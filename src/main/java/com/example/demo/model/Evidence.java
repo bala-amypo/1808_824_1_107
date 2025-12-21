@@ -9,6 +9,7 @@ public class Evidence
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
-  @many
+  @ManytoOne
+  @JoinColoumn(name="claim_id
   
 }

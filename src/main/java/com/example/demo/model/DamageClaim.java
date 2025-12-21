@@ -106,11 +106,13 @@ public class DamageClaim {
     public void setAppliedRules(Set<ClaimRule> appliedRules) {
         this.appliedRules = appliedRules;
     }
-}
-package com.example.demo.model;
-
-public enum ClaimStatus {
+    enum ClaimStatus {
     PENDING,
     APPROVED,
     REJECTED
 }
+
+
+}
+
+

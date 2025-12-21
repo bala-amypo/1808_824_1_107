@@ -8,6 +8,13 @@ import java.util.Set;
 @Table(name = "damage_claim")
 public class DamageClaim {
 
+    // ✅ Enum inside entity
+    public enum ClaimStatus {
+        PENDING,
+        APPROVED,
+        REJECTED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +32,6 @@ public class DamageClaim {
 
     private Double score;
 
-    // Technical requirement for testing
     @ManyToMany
     @JoinTable(
         name = "damage_claim_rule",
@@ -34,33 +40,17 @@ public class DamageClaim {
     )
     private Set<ClaimRule> appliedRules;
 
-    // Auto-generate filedAt
     @PrePersist
     public void onCreate() {
         this.filedAt = LocalDateTime.now();
     }
 
     // Constructors
-    public DamageClaim() {
-    }
+    public DamageClaim() {}
 
-    public DamageClaim(Long id, Parcel parcel, String claimDescription,
-                       ClaimStatus status, Double score, Set<ClaimRule> appliedRules) {
-        this.id = id;
-        this.parcel = parcel;
-        this.claimDescription = claimDescription;
-        this.status = status;
-        this.score = score;
-        this.appliedRules = appliedRules;
-    }
-
-    // Getters and Setters
+    // Getters & Setters
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Parcel getParcel() {
@@ -77,10 +67,6 @@ public class DamageClaim {
 
     public void setClaimDescription(String claimDescription) {
         this.claimDescription = claimDescription;
-    }
-
-    public LocalDateTime getFiledAt() {
-        return filedAt;
     }
 
     public ClaimStatus getStatus() {
@@ -106,13 +92,4 @@ public class DamageClaim {
     public void setAppliedRules(Set<ClaimRule> appliedRules) {
         this.appliedRules = appliedRules;
     }
-    enum ClaimStatus {
-    PENDING,
-    APPROVED,
-    REJECTED
 }
-
-
-}
-
-

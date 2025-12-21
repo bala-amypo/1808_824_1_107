@@ -28,7 +28,7 @@ public class DamageClaimServiceImpl implements DamageClaimService {
                 .orElseThrow(() -> new RuntimeException("Parcel not found"));
 
         claim.setParcel(parcel);
-        claim.setStatus(ClaimStatus.PENDING);
+        claim.setStatus(DamageClaim.ClaimStatus.PENDING);
 
         return damageClaimRepository.save(claim);
     }
@@ -45,7 +45,11 @@ public class DamageClaimServiceImpl implements DamageClaimService {
         claim.setAppliedRules(rules);
         claim.setScore(score);
 
-        claim.setStatus(score >= 70 ? ClaimStatus.APPROVED : ClaimStatus.REJECTED);
+        claim.setStatus(
+            score >= 70
+                ? DamageClaim.ClaimStatus.APPROVED
+                : DamageClaim.ClaimStatus.REJECTED
+        );
 
         return damageClaimRepository.save(claim);
     }

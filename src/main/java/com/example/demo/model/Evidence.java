@@ -16,6 +16,7 @@ public class Evidence
   private String evidenceType;
   private String fileUrl;
   private LocatDateTime uploadedAt;
+  @PrePersist
   
   
 }

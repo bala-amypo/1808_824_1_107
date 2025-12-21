@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
 import java.time.LocalDateTime;
-// import com.example.demo.model.DamageClaim;
+import com.example.demo.model.DamageClaim;
 
 @Entity
 @Table(name = "evidence")

@@ -1,12 +1,12 @@
-package com.example.demo.service;
+package com.example.demo.service.imp;
 
 import com.example.demo.model.*;
 import com.example.demo.repository.DamageClaimRepository;
 import com.example.demo.repository.ParcelRepository;
+import com.example.demo.service.DamageClaimService;
 import com.example.demo.util.RuleEngineUtil;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -21,9 +21,6 @@ public class DamageClaimServiceImpl implements DamageClaimService {
         this.parcelRepository = parcelRepository;
     }
 
-    /**
-     * File a claim after checking parcel exists
-     */
     @Override
     public DamageClaim fileClaim(Long parcelId, DamageClaim claim) {
 
@@ -36,36 +33,23 @@ public class DamageClaimServiceImpl implements DamageClaimService {
         return damageClaimRepository.save(claim);
     }
 
-    /**
-     * Evaluate claim using RuleEngineUtil and update score & status
-     */
     @Override
     public DamageClaim evaluateClaim(Long claimId) {
 
         DamageClaim claim = damageClaimRepository.findById(claimId)
                 .orElseThrow(() -> new RuntimeException("Claim not found"));
 
-        // Evaluate rules
-        Set<ClaimRule> appliedRules = RuleEngineUtil.evaluateRules(claim);
+        Set<ClaimRule> rules = RuleEngineUtil.evaluateRules(claim);
+        Double score = RuleEngineUtil.calculateScore(rules);
 
-        Double score = RuleEngineUtil.calculateScore(appliedRules);
-
-        claim.setAppliedRules(appliedRules);
+        claim.setAppliedRules(rules);
         claim.setScore(score);
 
-        // Update status AFTER evaluation
-        if (score >= 70) {
-            claim.setStatus(ClaimStatus.APPROVED);
-        } else {
-            claim.setStatus(ClaimStatus.REJECTED);
-        }
+        claim.setStatus(score >= 70 ? ClaimStatus.APPROVED : ClaimStatus.REJECTED);
 
         return damageClaimRepository.save(claim);
     }
 
-    /**
-     * Get claim by ID
-     */
     @Override
     public DamageClaim getClaim(Long claimId) {
         return damageClaimRepository.findById(claimId)

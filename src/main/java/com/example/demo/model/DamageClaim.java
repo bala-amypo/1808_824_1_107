@@ -4,7 +4,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
 import com.example.demo.model.Parcel;
 import com.example.demo.model.ClaimRule;
-import java.time.
+import java.time.LocalDateTime;
 public class DamageClaim
 {
     @Id
@@ -14,8 +14,9 @@ public class DamageClaim
     @joinColumn(name="parcel_id")
     private Parcel parcel;
     private LocalDateTime filedAt;
-    private String claimDescription;
     private String status;
+    @ManyToMany
+    @joinColumn(name="
     private Double score;
 
 public Long getId()

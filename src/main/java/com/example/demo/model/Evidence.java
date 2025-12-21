@@ -22,10 +22,23 @@ public class Evidence
     this.uploadedAt = LocalDateTime.now();
     }
 
-    String getid()
+     public Long getid()
     {
       return id;
     }
+    public void setid(Long id)
+    {
+      this.id=id;
+    }
+    public DamageClaim getclaim()
+    {
+      return DamageClaim claim;
+    }
+    public void setclaim(DamageClaim claim)
+    {
+      this.claim=claim;
+    }
+    
 
   
 }

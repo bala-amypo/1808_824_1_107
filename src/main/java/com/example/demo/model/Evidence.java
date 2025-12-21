@@ -10,6 +10,10 @@ public class Evidence
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
   @ManytoOne
-  @JoinColoumn(name="claim_id
+  @JoinColoumn(name="claim_id")
+  private DamageClaim claim;
+  private String evidenceType;
+  private String fileUrl;
+  private LocatDateTime uploadedAt;
   
 }

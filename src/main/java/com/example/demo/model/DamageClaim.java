@@ -20,12 +20,11 @@ public class DamageClaim {
 
     private LocalDateTime filedAt;
 
-    @Enumerated(EnumType.STRING)
-    private ClaimStatus status;
+    private String status;
 
     private Double score;
 
-    // Technical requirement for testing
+    
     @ManyToMany
     @JoinTable(
         name = "damage_claim_rule",
@@ -34,18 +33,18 @@ public class DamageClaim {
     )
     private Set<ClaimRule> appliedRules;
 
-    // Auto-generate filedAt
+   
     @PrePersist
     public void onCreate() {
         this.filedAt = LocalDateTime.now();
     }
 
-    // Constructors
+   
     public DamageClaim() {
     }
 
     public DamageClaim(Long id, Parcel parcel, String claimDescription,
-                       ClaimStatus status, Double score, Set<ClaimRule> appliedRules) {
+                       String status, Double score, Set<ClaimRule> appliedRules) {
         this.id = id;
         this.parcel = parcel;
         this.claimDescription = claimDescription;
@@ -54,7 +53,7 @@ public class DamageClaim {
         this.appliedRules = appliedRules;
     }
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }
@@ -83,11 +82,11 @@ public class DamageClaim {
         return filedAt;
     }
 
-    public ClaimStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(ClaimStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -106,9 +105,5 @@ public class DamageClaim {
     public void setAppliedRules(Set<ClaimRule> appliedRules) {
         this.appliedRules = appliedRules;
     }
-    public enum ClaimStatus {
-    PENDING,
-    APPROVED,
-    REJECTED
-}
+   
 }

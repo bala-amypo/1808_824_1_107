@@ -8,6 +8,8 @@ public class DamageClaim
     @Id
     @GenerateValue(strategy=GeneratedType.Identity)
     private Long id;
+    @ManyToOne
+    
     private String claimDescription;
     private String status;
     private Double score;

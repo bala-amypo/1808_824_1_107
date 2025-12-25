@@ -3,13 +3,11 @@ package com.example.demo.dto;
 public class AuthResponse {
 
     private String token;
-    private String message;
 
     public AuthResponse() {}
 
-    public AuthResponse(String token, String message) {
+    public AuthResponse(String token) {   // ✅ ADD / KEEP THIS
         this.token = token;
-        this.message = message;
     }
 
     public String getToken() {
@@ -18,13 +16,5 @@ public class AuthResponse {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

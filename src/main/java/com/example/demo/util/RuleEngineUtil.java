@@ -29,16 +29,39 @@ public class RuleEngineUtil {
         }
     }
 
-    /**
-     * Evaluates claim description against rules
-     */
+    /* =========================================================
+       ✅ METHODS EXPECTED BY TESTS
+       ========================================================= */
+
+    // Main method tests are calling
+    public static double computeScore(String description, List<ClaimRule> rules) {
+        return evaluate(description, rules).getScore();
+    }
+
+    // Overload used in some test cases
+    public static double computeScore(String description, List<?> rules) {
+        if (rules == null) {
+            return 0.0;
+        }
+        return computeScore(description, (List<ClaimRule>) rules);
+    }
+
+    // Null-safe overload used in tests
+    public static double computeScore(Object description, List<ClaimRule> rules) {
+        return computeScore(description == null ? "" : description.toString(), rules);
+    }
+
+    /* =========================================================
+       CORE LOGIC
+       ========================================================= */
+
     public static Result evaluate(String description, List<ClaimRule> rules) {
 
         double totalScore = 0.0;
         Set<ClaimRule> appliedRules = new HashSet<>();
 
-        if (description == null) {
-            description = "";
+        if (description == null || rules == null) {
+            return new Result(0.0, appliedRules);
         }
 
         String lowerDesc = description.toLowerCase();
@@ -52,7 +75,6 @@ public class RuleEngineUtil {
             }
         }
 
-        // Clamp score between 0.0 and 1.0
         if (totalScore > 1.0) {
             totalScore = 1.0;
         }
@@ -60,23 +82,19 @@ public class RuleEngineUtil {
         return new Result(totalScore, appliedRules);
     }
 
-    /**
-     * Rule matching logic
-     */
     private static boolean matches(String condition, String description) {
 
         if (condition == null) {
             return false;
         }
 
-        // Rule: always
         if ("always".equalsIgnoreCase(condition)) {
             return true;
         }
 
-        // Rule: description_contains:KEYWORD
         if (condition.toLowerCase().startsWith("description_contains:")) {
-            String keyword = condition.substring("description_contains:".length())
+            String keyword = condition
+                    .substring("description_contains:".length())
                     .toLowerCase();
             return description.contains(keyword);
         }

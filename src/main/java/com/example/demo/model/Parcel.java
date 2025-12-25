@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import 
+import java.time.LocalDateTime;
 @Entity
 @Table(name = "parcels", uniqueConstraints = @UniqueConstraint(columnNames = "trackingNumber"))
 public class Parcel {
@@ -14,6 +14,14 @@ public class Parcel {
     private String senderName;
     private String receiverName;
     private Double weightKg;
+    private LocalDateTime deliveredAt;
+    @PrePersist
+    public createdAt(){
+    if(deliveredAt==null)
+    {
+    deliveredAt=LocalDateTime.now();
+    }
+    }
 
     public Parcel() {}
 

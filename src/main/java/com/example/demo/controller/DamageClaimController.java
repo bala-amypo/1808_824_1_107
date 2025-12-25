@@ -1,35 +1,24 @@
-package com.example.demo.controller;
-
-import com.example.demo.model.DamageClaim;
-import com.example.demo.service.DamageClaimService;
-import org.springframework.web.bind.annotation.*;
-
 @RestController
-@RequestMapping("/claims")
+@RequestMapping("/api/claims")
 public class DamageClaimController {
 
-    private final DamageClaimService damageClaimService;
+    private final DamageClaimRepository repo;
+    private final ClaimRuleRepository ruleRepo;
 
-    public DamageClaimController(DamageClaimService damageClaimService) {
-        this.damageClaimService = damageClaimService;
+    public DamageClaimController(DamageClaimRepository repo, ClaimRuleRepository ruleRepo) {
+        this.repo = repo;
+        this.ruleRepo = ruleRepo;
     }
 
-    // POST /claims/file/{parcelId}
-    @PostMapping("/file/{parcelId}")
-    public DamageClaim fileClaim(@PathVariable Long parcelId,
-                                 @RequestBody DamageClaim claim) {
-        return damageClaimService.fileClaim(parcelId, claim);
-    }
-
-    // PUT /claims/evaluate/{claimId}
-    @PutMapping("/evaluate/{claimId}")
-    public DamageClaim evaluateClaim(@PathVariable Long claimId) {
-        return damageClaimService.evaluateClaim(claimId);
-    }
-
-    // GET /claims/{claimId}
-    @GetMapping("/{claimId}")
-    public DamageClaim getClaim(@PathVariable Long claimId) {
-        return damageClaimService.getClaim(claimId);
+    @PutMapping("/evaluate/{id}")
+    public DamageClaim evaluate(@PathVariable Long id) {
+        DamageClaim claim = repo.findById(id).orElseThrow();
+        double score = RuleEngineUtil.evaluate(
+                claim.getDescription(),
+                ruleRepo.findAll()
+        );
+        claim.setScore(score);
+        claim.setStatus(score > 5 ? "APPROVED" : "SUSPICIOUS");
+        return repo.save(claim);
     }
 }

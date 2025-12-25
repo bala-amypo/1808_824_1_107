@@ -33,20 +33,12 @@ public class RuleEngineUtil {
        ✅ METHODS EXPECTED BY TESTS
        ========================================================= */
 
-    // Main method tests are calling
+    // ✅ MAIN method expected by most tests
     public static double computeScore(String description, List<ClaimRule> rules) {
         return evaluate(description, rules).getScore();
     }
 
-    // Overload used in some test cases
-    public static double computeScore(String description, List<ClaimRule> rules) {
-        if (rules == null) {
-            return 0.0;
-        }
-        return computeScore(description, (List<ClaimRule>) rules);
-    }
-
-    // Null-safe overload used in tests
+    // ✅ Overload expected by some tests (null / Object input)
     public static double computeScore(Object description, List<ClaimRule> rules) {
         return computeScore(description == null ? "" : description.toString(), rules);
     }

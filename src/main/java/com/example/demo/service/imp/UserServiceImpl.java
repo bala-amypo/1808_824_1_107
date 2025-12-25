@@ -1,14 +1,12 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.BadRequestException;
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,9 +20,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
-
         if (userRepository.existsByEmail(user.getEmail())) {
-            throw new BadRequestException("Email already exists");
+            throw new BadRequestException("email exists");
         }
 
         if (user.getRole() == null) {
@@ -32,8 +29,6 @@ public class UserServiceImpl implements UserService {
         }
 
         user.setPassword(encoder.encode(user.getPassword()));
-        user.setToken(generateToken());
-
         return userRepository.save(user);
     }
 
@@ -41,26 +36,5 @@ public class UserServiceImpl implements UserService {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-    }
-
-    // ✅ LOGIN METHOD (NO JWT)
-    @Override
-    public String login(String email, String password) {
-
-        User user = findByEmail(email);
-
-        if (!encoder.matches(password, user.getPassword())) {
-            throw new BadRequestException("Invalid credentials");
-        }
-
-        String token = generateToken();
-        user.setToken(token);
-        userRepository.save(user);
-
-        return token;
-    }
-
-    private String generateToken() {
-        return UUID.randomUUID().toString();
     }
 }

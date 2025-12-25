@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-
+import 
 @Entity
 @Table(name = "parcels", uniqueConstraints = @UniqueConstraint(columnNames = "trackingNumber"))
 public class Parcel {

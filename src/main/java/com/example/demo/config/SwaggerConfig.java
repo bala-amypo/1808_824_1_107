@@ -18,17 +18,3 @@ public class SwaggerConfig {
                 ));
         }
 }
-package com.example.demo.config;
-
-import io.swagger.v3.oas.models.*;
-import org.springframework.context.annotation.*;
-
-@Configuration
-public class SwaggerConfig {
-
-    @Bean
-    public OpenAPI openAPI() {
-        return new OpenAPI()
-                .info(new Info().title("Parcel Damage Claim API"));
-    }
-}

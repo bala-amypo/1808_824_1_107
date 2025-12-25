@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ClaimRuleServiceimp implements ClaimRuleService {
+public class ClaimRuleServiceImpl implements ClaimRuleService {
 
     private final ClaimRuleRepository ruleRepository;
 

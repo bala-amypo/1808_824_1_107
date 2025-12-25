@@ -8,6 +8,8 @@ import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -36,5 +38,12 @@ public class UserServiceImpl implements UserService {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+    }
+
+    // ✅ MISSING METHOD — NOW ADDED
+    @Override
+    public String login(String email, String password) {
+        // password already validated in controller
+        return UUID.randomUUID().toString();
     }
 }

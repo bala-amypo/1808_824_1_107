@@ -15,13 +15,7 @@ public class Parcel {
     private String receiverName;
     private Double weightKg;
     private LocalDateTime deliveredAt;
-    @PrePersist
-    public createdAt(){
-    if(deliveredAt==null)
-    {
-    deliveredAt=LocalDateTime.now();
-    }
-    }
+   
 
     public Parcel() {}
 
@@ -70,5 +64,13 @@ public class Parcel {
  
     public void setWeightKg(Double weightKg) {
         this.weightKg = weightKg;
+    }
+    public LocalDateTime getDeliveredAt()
+    {
+        return deliveredAt;
+    }
+    public void setDeliveredAt(LocalDateTime deliveredAt)
+    {
+        this.deliveredAt=deliveredAt;
     }
 }

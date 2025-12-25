@@ -1,7 +1,6 @@
 package com.example.demo.security;
 
-import com.example.demo.model.User;
-import com.example.demo.service.UserService;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,12 +13,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
 
-public class TokenFilter extends OncePerRequestFilter {
+public class JwtFilter extends OncePerRequestFilter {
 
-    private final UserService userService;
+    private final JwtUtil jwtUtil;
 
-    public TokenFilter(UserService userService) {
-        this.userService = userService;
+    public JwtFilter(JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
     }
 
     @Override
@@ -31,23 +30,23 @@ public class TokenFilter extends OncePerRequestFilter {
 
         String header = request.getHeader("Authorization");
 
-        // Expected format:
-        // Authorization: Token <uuid>
-        if (header != null && header.startsWith("Token ")) {
-
-            String token = header.substring(6);
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
 
             try {
-                User user = userService.validateToken(token);
+                Claims claims = jwtUtil.validateToken(token);
 
-                UsernamePasswordAuthenticationToken authentication =
+                String email = claims.get("email", String.class);
+                String role = claims.get("role", String.class);
+
+                UsernamePasswordAuthenticationToken auth =
                         new UsernamePasswordAuthenticationToken(
-                                user.getEmail(),
+                                email,
                                 null,
-                                List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole()))
+                                List.of(new SimpleGrantedAuthority("ROLE_" + role))
                         );
 
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                SecurityContextHolder.getContext().setAuthentication(auth);
 
             } catch (Exception e) {
                 SecurityContextHolder.clearContext();

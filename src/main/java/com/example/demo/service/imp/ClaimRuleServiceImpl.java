@@ -13,7 +13,8 @@ public class ClaimRuleServiceImpl implements ClaimRuleService {
 
     private final ClaimRuleRepository ruleRepository;
 
-    public ClaimRuleServiceimp(ClaimRuleRepository ruleRepository) {
+    // ✅ FIXED constructor name
+    public ClaimRuleServiceImpl(ClaimRuleRepository ruleRepository) {
         this.ruleRepository = ruleRepository;
     }
 

@@ -39,7 +39,7 @@ public class RuleEngineUtil {
     }
 
     // Overload used in some test cases
-    public static double computeScore(String description, List<?> rules) {
+    public static double computeScore(String description, List<ClaimRule> rules) {
         if (rules == null) {
             return 0.0;
         }

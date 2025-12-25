@@ -1,58 +1,53 @@
-// package com.example.demo.controller;
-
-// import com.example.demo.model.User;
-// import com.example.demo.service.UserService;
-// import org.springframework.web.bind.annotation.*;
-
-// @RestController
-// @RequestMapping("/auth")
-// public class AuthController {
-
-//     private final UserService userService;
-
-//     public AuthController(UserService userService) {
-//         this.userService = userService;
-//     }
-
-//     // POST /auth/register
-//     @PostMapping("/register")
-//     public User register(@RequestBody User user) {
-//         return userService.register(user);
-//     }
-
-//     // POST /auth/login
-//     @PostMapping("/login")
-//     public User login(@RequestParam String email) {
-//         return userService.findByEmail(email);
-//     }
-// }
-
 package com.example.demo.controller;
 
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.AuthResponse;
 import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.security.JwtUtil;
+import com.example.demo.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
-    private final UserRepository repo;
-    private final JwtUtil jwt;
+    private final UserService userService;
+    private final JwtUtil jwtUtil;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthController(UserRepository repo, JwtUtil jwt) {
-        this.repo = repo;
-        this.jwt = jwt;
+    public AuthController(UserService userService,
+                          JwtUtil jwtUtil,
+                          PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/register")
     public User register(@RequestBody User user) {
-        return repo.save(user);
+        return userService.register(user);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        return jwt.generateToken(user.getEmail());
+    public AuthResponse login(@RequestBody AuthRequest request) {
+        User user = userService.findByEmail(request.getEmail());
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        String token = jwtUtil.generateToken(
+                user.getId(),
+                user.getEmail(),
+                user.getRole()
+        );
+
+        return new AuthResponse(
+                token,
+                user.getId(),
+                user.getEmail(),
+                user.getRole()
+        );
     }
 }

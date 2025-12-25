@@ -1,48 +1,26 @@
-// package com.example.demo.controller;
+package com.example.demo.controller;
 
-// import com.example.demo.model.Parcel;
-// import com.example.demo.service.ParcelService;
-// import org.springframework.web.bind.annotation.*;
+import com.example.demo.model.Parcel;
+import com.example.demo.service.ParcelService;
+import org.springframework.web.bind.annotation.*;
 
-// @RestController
-// @RequestMapping("/parcels")
-// public class ParcelController {
-
-//     private final ParcelService parcelService;
-
-//     public ParcelController(ParcelService parcelService) {
-//         this.parcelService = parcelService;
-//     }
-
-//     // POST /parcels
-//     @PostMapping
-//     public Parcel addParcel(@RequestBody Parcel parcel) {
-//         return parcelService.addParcel(parcel);
-//     }
-
-//     // GET /parcels/tracking/{trackingNumber}
-//     @GetMapping("/tracking/{trackingNumber}")
-//     public Parcel getParcel(@PathVariable String trackingNumber) {
-//         return parcelService.getByTrackingNumber(trackingNumber);
-//     }
-// }
 @RestController
-@RequestMapping("/api/parcels")
+@RequestMapping("/parcels")
 public class ParcelController {
 
-    private final ParcelRepository repo;
+    private final ParcelService parcelService;
 
-    public ParcelController(ParcelRepository repo) {
-        this.repo = repo;
+    public ParcelController(ParcelService parcelService) {
+        this.parcelService = parcelService;
     }
 
     @PostMapping
-    public Parcel add(@RequestBody Parcel p) {
-        return repo.save(p);
+    public Parcel addParcel(@RequestBody Parcel parcel) {
+        return parcelService.addParcel(parcel);
     }
 
     @GetMapping("/tracking/{trackingNumber}")
-    public Parcel get(@PathVariable String trackingNumber) {
-        return repo.findByTrackingNumber(trackingNumber).orElseThrow();
+    public Parcel getByTracking(@PathVariable String trackingNumber) {
+        return parcelService.getByTrackingNumber(trackingNumber);
     }
 }

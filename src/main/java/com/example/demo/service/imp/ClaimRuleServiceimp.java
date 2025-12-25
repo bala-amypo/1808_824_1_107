@@ -1,23 +1,32 @@
-package com.example.demo.service.imp;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+package com.example.demo.service.impl;
+
 import com.example.demo.model.ClaimRule;
 import com.example.demo.repository.ClaimRuleRepository;
 import com.example.demo.service.ClaimRuleService;
+import com.example.demo.exception.BadRequestException;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
-public class ClaimRuleServiceimp implements ClaimRuleService{
-    @Autowired
-    ClaimRuleRepository crr;
-    public ClaimRule addRule(ClaimRule rule)
-    {
-      return  crr.save(rule);
-    }
-    public List<ClaimRule> getAllRules()
-    {
-        return crr.findAll();
+public class ClaimRuleServiceImpl implements ClaimRuleService {
+
+    private final ClaimRuleRepository ruleRepository;
+
+    public ClaimRuleServiceImpl(ClaimRuleRepository ruleRepository) {
+        this.ruleRepository = ruleRepository;
     }
 
-    
+    @Override
+    public ClaimRule addRule(ClaimRule rule) {
+        if (rule.getWeight() < 0) {
+            throw new BadRequestException("weight");
+        }
+        return ruleRepository.save(rule);
+    }
+
+    @Override
+    public List<ClaimRule> getAllRules() {
+        return ruleRepository.findAll();
+    }
 }

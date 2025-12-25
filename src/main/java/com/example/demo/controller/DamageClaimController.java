@@ -1,24 +1,33 @@
+package com.example.demo.controller;
+
+import com.example.demo.model.DamageClaim;
+import com.example.demo.service.DamageClaimService;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
-@RequestMapping("/api/claims")
+@RequestMapping("/claims")
 public class DamageClaimController {
 
-    private final DamageClaimRepository repo;
-    private final ClaimRuleRepository ruleRepo;
+    private final DamageClaimService claimService;
 
-    public DamageClaimController(DamageClaimRepository repo, ClaimRuleRepository ruleRepo) {
-        this.repo = repo;
-        this.ruleRepo = ruleRepo;
+    public DamageClaimController(DamageClaimService claimService) {
+        this.claimService = claimService;
     }
 
-    @PutMapping("/evaluate/{id}")
-    public DamageClaim evaluate(@PathVariable Long id) {
-        DamageClaim claim = repo.findById(id).orElseThrow();
-        double score = RuleEngineUtil.evaluate(
-                claim.getDescription(),
-                ruleRepo.findAll()
-        );
-        claim.setScore(score);
-        claim.setStatus(score > 5 ? "APPROVED" : "SUSPICIOUS");
-        return repo.save(claim);
+    @PostMapping("/file/{parcelId}")
+    public DamageClaim fileClaim(
+            @PathVariable Long parcelId,
+            @RequestBody DamageClaim claim) {
+        return claimService.fileClaim(parcelId, claim);
+    }
+
+    @PutMapping("/evaluate/{claimId}")
+    public DamageClaim evaluateClaim(@PathVariable Long claimId) {
+        return claimService.evaluateClaim(claimId);
+    }
+
+    @GetMapping("/{claimId}")
+    public DamageClaim getClaim(@PathVariable Long claimId) {
+        return claimService.getClaim(claimId);
     }
 }

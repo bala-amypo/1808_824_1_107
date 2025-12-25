@@ -1,8 +1,10 @@
-package com.example.demo.service.imp;
+package com.example.demo.service.impl;
 
 import com.example.demo.model.Parcel;
 import com.example.demo.repository.ParcelRepository;
 import com.example.demo.service.ParcelService;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,9 +18,12 @@ public class ParcelServiceImpl implements ParcelService {
 
     @Override
     public Parcel addParcel(Parcel parcel) {
+        if (parcel.getWeightKg() <= 0) {
+            throw new BadRequestException("weight");
+        }
 
         if (parcelRepository.existsByTrackingNumber(parcel.getTrackingNumber())) {
-            throw new RuntimeException("Parcel with this tracking number already exists");
+            throw new BadRequestException("tracking");
         }
 
         return parcelRepository.save(parcel);
@@ -26,8 +31,7 @@ public class ParcelServiceImpl implements ParcelService {
 
     @Override
     public Parcel getByTrackingNumber(String trackingNumber) {
-
         return parcelRepository.findByTrackingNumber(trackingNumber)
-                .orElseThrow(() -> new RuntimeException("Parcel not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Parcel not found"));
     }
 }

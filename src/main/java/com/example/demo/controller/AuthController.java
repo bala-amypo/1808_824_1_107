@@ -5,14 +5,14 @@ import com.example.demo.dto.AuthResponse;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-@Autowired
-    private final UserService userService;
+    @Autowired
+    public UserService userService;
     // private final PasswordEncoder passwordEncoder;
 
     // public AuthController(UserService userService,

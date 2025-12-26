@@ -5,12 +5,13 @@ import com.example.demo.dto.AuthResponse;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
+import org.framework
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-
+@Autowired
     private final UserService userService;
     // private final PasswordEncoder passwordEncoder;
 

@@ -97,4 +97,3 @@ public class DamageClaim {
         this.appliedRules = appliedRules;
     }
 }
-3

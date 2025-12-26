@@ -18,7 +18,10 @@ public class Evidence {
 
     private LocalDateTime uploadedAt;
 
-    public Evidence() {}
+    // ✅ REQUIRED for Mockito-based tests
+    public Evidence() {
+        this.uploadedAt = LocalDateTime.now();
+    }
 
     public Long getId() {
         return id;

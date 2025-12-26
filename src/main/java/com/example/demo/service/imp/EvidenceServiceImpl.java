@@ -32,8 +32,10 @@ public class EvidenceServiceImpl implements EvidenceService {
 
         evidence.setClaim(claim);
 
-        // ✅ REQUIRED: Mockito tests, no @PrePersist
-        evidence.setUploadedAt(LocalDateTime.now());
+        // ✅ GUARANTEE non-null for tests
+        if (evidence.getUploadedAt() == null) {
+            evidence.setUploadedAt(LocalDateTime.now());
+        }
 
         return evidenceRepository.save(evidence);
     }

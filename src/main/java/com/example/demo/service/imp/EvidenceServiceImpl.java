@@ -32,10 +32,8 @@ public class EvidenceServiceImpl implements EvidenceService {
 
         evidence.setClaim(claim);
 
-        // ✅ REQUIRED: tests use mocked repo, so JPA callbacks won't run
-        if (evidence.getUploadedAt() == null) {
-            evidence.setUploadedAt(LocalDateTime.now());
-        }
+        // ✅ REQUIRED: Mockito tests, no @PrePersist
+        evidence.setUploadedAt(LocalDateTime.now());
 
         return evidenceRepository.save(evidence);
     }

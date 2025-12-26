@@ -22,7 +22,7 @@ public class DamageClaim {
 
     private String status = "PENDING";
 
-    private Double score = 0.0; // ✅ default score
+    private Double score ; // ✅ default score
 
     @ManyToMany
     @JoinTable(

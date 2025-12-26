@@ -8,6 +8,7 @@ import com.example.demo.service.EvidenceService;
 import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -25,10 +26,15 @@ public class EvidenceServiceImpl implements EvidenceService {
 
     @Override
     public Evidence uploadEvidence(Long claimId, Evidence evidence) {
+
         DamageClaim claim = claimRepository.findById(claimId)
                 .orElseThrow(() -> new ResourceNotFoundException("Claim not found"));
 
         evidence.setClaim(claim);
+
+        // ✅ Required for testEvidenceUploadTimestamp
+        evidence.setUploadedAt(LocalDateTime.now());
+
         return evidenceRepository.save(evidence);
     }
 

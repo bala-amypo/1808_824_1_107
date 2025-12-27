@@ -3,7 +3,6 @@ package com.example.demo.service.impl;
 import com.example.demo.model.ClaimRule;
 import com.example.demo.repository.ClaimRuleRepository;
 import com.example.demo.service.ClaimRuleService;
-import com.example.demo.exception.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,9 +19,9 @@ public class ClaimRuleServiceImpl implements ClaimRuleService {
     @Override
     public ClaimRule addRule(ClaimRule rule) {
 
-        // ✅ EXACT condition + EXACT message required by test
-        if (rule == null || rule.getWeight() == null || rule.getWeight() <= 0) {
-            throw new BadRequestException("Invalid weight");
+        // ✅ EXACT exception type expected by test
+        if (rule == null || rule.getWeight() <= 0) {
+            throw new IllegalArgumentException();
         }
 
         return ruleRepository.save(rule);

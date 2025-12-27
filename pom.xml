@@ -82,12 +82,12 @@
     <version>0.11.5</version>
     <scope>runtime</scope>
 </dependency>
-<!-- <dependency>
+<dependency>
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt-jackson</artifactId>
     <version>0.11.5</version>
     <scope>runtime</scope>
-</dependency> -->
+</dependency>
 
     </dependencies>
 
@@ -102,11 +102,11 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.2.5</version>
 				<dependencies>
-					<!-- <dependency>
+					<dependency>
 						<groupId>org.apache.maven.surefire</groupId>
 						<artifactId>surefire-testng</artifactId>
 						<version>3.2.5</version>
-					</dependency> -->
+					</dependency>
 				</dependencies>
 			</plugin>
 		</plugins>

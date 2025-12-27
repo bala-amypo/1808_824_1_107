@@ -22,7 +22,7 @@ public class ClaimRuleServiceImpl implements ClaimRuleService {
 
         // ✅ EXACT condition + EXACT message required by test
         if (rule == null || rule.getWeight() == null || rule.getWeight() <= 0) {
-            throw new BadRequestException("InvalidWeight");
+            throw new BadRequestException("Invalid weight");
         }
 
         return ruleRepository.save(rule);
